@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Vereadores {
+  nome          String
+  nome_urna     String
+  idade         Int?
+  genero        String
+  dt_nascimento String?
+  estado_civil  String
+  cor_raca      String
+  ocupacao      String
+  escolaridade  String
+
+  turno          Int
+  numero         Int
+  numero_partido Int
+  sigla_partido  String
+  nome_partido   String
+  nome_coligacao String
+
+  uf        String
+  municipio String
+
+  updated_at DateTime @updatedAt
+
+  @@id([numero, municipio, uf])
+  @@map("vereadores")
+}
+
+model Prefeitos {
+  nome          String
+  nome_urna     String
+  idade         Int?
+  genero        String
+  dt_nascimento String?
+  estado_civil  String
+  cor_raca      String
+  ocupacao      String
+  escolaridade  String
+
+  turno          Int
+  numero         Int
+  numero_partido Int
+  sigla_partido  String
+  nome_partido   String
+  nome_coligacao String
+
+  uf        String
+  municipio String
+
+  updated_at DateTime @updatedAt
+
+  @@id([numero, municipio, uf])
+  @@map("prefeitos")
+}
+
+model VicePrefeitos {
+  nome          String
+  nome_urna     String
+  idade         Int?
+  genero        String
+  dt_nascimento String?
+  estado_civil  String
+  cor_raca      String
+  ocupacao      String
+  escolaridade  String
+
+  turno          Int
+  numero         Int
+  numero_partido Int
+  sigla_partido  String
+  nome_partido   String
+  nome_coligacao String
+
+  uf        String
+  municipio String
+
+  updated_at DateTime @updatedAt
+
+  @@id([numero, municipio, uf])
+  @@map("vice_prefeitos")
+}
